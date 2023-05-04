@@ -31,10 +31,14 @@ header {
     height: 50px;
 }
 
+.shape-container {
+    padding: 20px;
+}
+
 .container {
     background-color: rgba(187, 187, 187, 0.158);
 
-    padding: 20px;
+    padding: 30px 0px;
 
     max-width: 600px;
 
@@ -67,12 +71,12 @@ header {
 }
 
 .timer {
-    display: block;
     text-align: center;
+
 
     margin: 50px auto;
 
-    font-size: 8em;
+    font-size: 100px;
     font-weight: 600;
     font-family: Arial, Helvetica, sans-serif;
 }
