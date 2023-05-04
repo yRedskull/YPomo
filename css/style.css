@@ -1,0 +1,111 @@
+:root {
+    --background: rgb(190, 64, 64);
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    color: white;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+
+    height: 96vh;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.26);
+
+    text-align: center;
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.315);
+
+    padding: 5px 0px 10px 0px;
+    
+    font-size: 3em;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    height: 50px;
+}
+
+.container {
+    background-color: rgba(187, 187, 187, 0.158);
+
+    padding: 20px;
+
+    max-width: 600px;
+
+    margin: 50px auto;
+    
+    border-radius: 10px;
+}
+
+.option {
+    display: flex;
+    justify-content: center;
+}
+
+.pomodoro, .short-break, .long-break {
+    background-color: rgba(0, 0, 0, 0.116);
+
+    cursor: pointer;
+
+    font-size: 1.2em;
+    font-weight: 500;
+
+    border-radius: 4px;
+
+    padding: 8px;
+    margin: 3px;
+}
+
+.clicked {
+    background-color: rgba(0, 0, 0, 0.178);
+}
+
+.timer {
+    display: block;
+    text-align: center;
+
+    margin: 50px auto;
+
+    font-size: 8em;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.start {
+    background-color: rgba(255, 255, 255, 0.911);
+    color: var(--background);
+
+    display: block;
+
+    cursor: pointer;
+
+    width: 200px;
+
+    margin: auto;
+    padding: 24px;
+
+    text-align: center;
+
+    font-size: 2em;
+    font-weight: 600;
+
+    border: 0px;
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.384);
+}
+
+.btn-click {
+    background-color: rgba(255, 255, 255, 0.507);
+    box-shadow: 0px 0px 8px 1px rgba(0, 0, 0, 0.384);
+}
+
+.img {
+    width: 32px;
+}
