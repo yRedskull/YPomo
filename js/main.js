@@ -45,12 +45,9 @@ class YPomo{
                 
                 if (this.minutes === 0 && this.seconds === 0) {
                     clearInterval(this.whi)
-                    console.log(this.pomodoroClicked, this.shortBreakClicked)
-                    if (this.pomodoroClicked) shortBreakSet(this)
-                    else if (this.shortBreakClicked) pomodoroSet(this)
-                    else if (this.longBreakClicked) longBreakSet(this)
-                    this.start.classList.remove('btn-click')
-                    this.start.innerHTML = 'Começar'
+                    if (this.pomodoroClicked) this.shortBreakSet()
+                    else if (this.shortBreakClicked) this.pomodoroSet()
+                    else if (this.longBreakClicked) this.pomodoroSet()
                 }
             }, 1000) 
             this.startClicked = true
