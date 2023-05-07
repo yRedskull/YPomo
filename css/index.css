@@ -1,0 +1,67 @@
+:root {
+    --background: #be4040;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    color: white;
+
+
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+
+    height: 100vh;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.26);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.315);
+
+    padding: 5px 0px 10px 0px;
+    
+    font-size: 2em;
+    font-weight: 500;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    height: 50px;
+}
+
+.logo {
+    margin: 10px;
+}
+
+.config {
+    width: 50px;
+
+    display: block;
+
+    margin: auto;
+
+
+    filter: opacity(.6);
+
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.config:hover {
+    filter: opacity(1);
+}
+
+.img {
+    width: 32px;
+    margin: -5px 0px;
+}
+
+

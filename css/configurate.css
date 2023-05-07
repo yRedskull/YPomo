@@ -1,0 +1,27 @@
+.blur-shape-config {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    top: 0;
+    left: 0;
+
+    background: rgba(0, 0, 0, 0.329);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+.shape-config {
+    width: 60%;
+    min-width: 450px;
+    min-height: 200px;
+
+    color: black;
+
+    background-color: white;
+}
+
+

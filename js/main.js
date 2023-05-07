@@ -5,8 +5,12 @@ class YPomo{
         this.shortBreak = document.querySelector('.short-break')
         this.longBreak = document.querySelector('.long-break')
         this.start = document.querySelector('.start')
+        this.config = document.querySelector('.config')
+        this.shapeconfig = document.querySelector('.blur-shape-config')
 
+        this.configClicked = false
         this.startClicked = false
+        this.pomodoroconfig = ''
         this.pomodoroClicked = true
         this.pomodoro.classList.add('clicked')
         this.shortBreakClicked = false
@@ -17,6 +21,9 @@ class YPomo{
     }
 
     listener() {
+
+        this.config.addEventListener('click', e => this.configuration())
+
         this.start.addEventListener('click', e => this.chronometer())
 
         this.pomodoro.addEventListener('click', e=> this.pomodoroSet())
@@ -26,7 +33,19 @@ class YPomo{
         this.longBreak.addEventListener('click', e=> this.longBreakSet())
     }
 
-    chronometer() {
+
+    configuration() {
+        if (this.configClicked){
+            this.shapeconfig.classList.add('show')
+            this.configClicked = false
+        } else {
+            this.shapeconfig.classList.remove('show')
+            this.configClicked = true
+        }
+
+    }
+
+    async chronometer() {
         if (this.startClicked) {
             this.start.classList.remove('btn-click')
             this.start.innerHTML = 'Começar'
@@ -35,7 +54,7 @@ class YPomo{
         } else {
             this.start.classList.add('btn-click')
             this.start.innerHTML = 'Pausar'
-            this.whi = setInterval(() => {
+            this.whi = await setInterval(() => {
                 if (this.seconds === 0) {
                     this.seconds = 59
                     this.minutes--   
