@@ -5,8 +5,20 @@ class YPomo{
         this.shortBreak = document.querySelector('.short-break')
         this.longBreak = document.querySelector('.long-break')
         this.start = document.querySelector('.start')
-        this.config = document.querySelector('.config')
-        this.shapeconfig = document.querySelector('.blur-shape-config')
+        this.saveConfig = document.querySelector('#save-config')
+        this.blurModalConfig = document.querySelector('.blur-modal-config')
+        this.modalConfig = document.querySelector('.modal-config')
+        this.configPomodoroMin = document.querySelector('#pomodoro-min')
+        this.configShortMin = document.querySelector('#short-break-min')
+        this.configLongMin = document.querySelector('#long-break-min')
+
+        this.standardPomodoro = 25
+        this.standardShortBreak = 10
+        this.standardLongBreak = 15
+
+        this.configPomodoroMin.value = this.standardPomodoro
+        this.configShortMin.value = this.standardShortBreak
+        this.configLongMin.value = this.standardLongBreak
 
         this.configClicked = false
         this.startClicked = false
@@ -14,34 +26,42 @@ class YPomo{
         this.pomodoroClicked = true
         this.pomodoro.classList.add('clicked')
         this.shortBreakClicked = false
-        this.shortLongClicked = false
+        this.longBreakClicked = false
+
+        this.seconds = 0
 
         this.pomodoroSet()
         this.printer()
     }
 
     listener() {
+        document.addEventListener('click', e=> {
+            const el = e.target
+            if (el === this.start) this.chronometer()
+            if (el === this.pomodoro) this.pomodoroSet()
+            if (el === this.shortBreak) this.shortBreakSet()
+            if (el === this.longBreak) this.longBreakSet()
+            if (el === this.blurModalConfig 
+                || el === this.saveConfig
+                || el.classList.contains('config-logo')
+                ) this.configurationToggle()
+        })
 
-        this.config.addEventListener('click', e => this.configuration())
-
-        this.start.addEventListener('click', e => this.chronometer())
-
-        this.pomodoro.addEventListener('click', e=> this.pomodoroSet())
-
-        this.shortBreak.addEventListener('click', e=> this.shortBreakSet())
-
-        this.longBreak.addEventListener('click', e=> this.longBreakSet())
     }
 
 
-    configuration() {
-        if (this.configClicked){
-            this.shapeconfig.classList.add('show')
-            this.configClicked = false
-        } else {
-            this.shapeconfig.classList.remove('show')
-            this.configClicked = true
-        }
+    configurationToggle() {
+        this.blurModalConfig.classList.toggle('hide')
+        this.modalConfig.classList.toggle('hide')
+
+        this.seconds = 0
+        
+        if (this.configClicked) this.configClicked = false
+        else this.configClicked = true
+
+        if (this.pomodoroClicked) this.pomodoroSet()
+        if (this.shortBreakClicked) this.shortBreakSet()
+        if (this.longBreakClicked) this.longBreakSet()
 
     }
 
@@ -78,19 +98,19 @@ class YPomo{
     pomodoroSet() {
         if (this.startClicked) {
             clearInterval(this.whi)
-            if (!this.pomodoroClicked) {
-                this.start.classList.remove('btn-click')
-                this.start.innerHTML = 'Começar'
-            }
+            this.start.classList.remove('btn-click')
+            this.start.innerHTML = 'Começar'
             this.startClicked = false
         }
-        this.minutes = 25
-        this.seconds = 0
-    
+        this.minutes = this.configPomodoroMin.value || this.standardPomodoro
+        
+        if (!this.pomodoroClicked) {
+            this.seconds = 0
+        }
     
         this.pomodoroClicked = true
         this.shortBreakClicked = false
-        this.longShortClicked = false
+        this.longBreakClicked = false
     
         this.pomodoro.classList.add('clicked')
         if (this.shortBreak.classList.contains('clicked')) this.shortBreak.classList.remove('clicked')
@@ -101,18 +121,19 @@ class YPomo{
     shortBreakSet() {
         if (this.startClicked) {
             clearInterval(this.whi)
-            if (!this.shortBreakClicked) {
-                this.start.classList.remove('btn-click')
-                this.start.innerHTML = 'Começar'
-            }
+            this.start.classList.remove('btn-click')
+            this.start.innerHTML = 'Começar'
             this.startClicked = false
         }
-        this.minutes = 5
-        this.seconds = 0
+        this.minutes = this.configShortMin.value || this.standardShortBreak
+
+        if (!this.shortBreakClicked) {
+            this.seconds = 0
+        }
     
         this.pomodoroClicked = false
         this.shortBreakClicked = true
-        this.longShortClicked = false
+        this.longBreakClicked = false
     
         this.shortBreak.classList.add('clicked')
         if (this.pomodoro.classList.contains('clicked')) this.pomodoro.classList.remove('clicked')
@@ -123,18 +144,19 @@ class YPomo{
     longBreakSet() {
         if (this.startClicked) {
             clearInterval(this.whi)
-            if (!this.longBreakClicked) {
-                this.start.classList.remove('btn-click')
-                this.start.innerHTML = 'Começar'
-            }
+            this.start.classList.remove('btn-click')
+            this.start.innerHTML = 'Começar'
             this.startClicked = false
         }
-        this.minutes = 15
-        this.seconds = 0
-    
+        this.minutes = this.configLongMin.value || this.standardLongBreak
+
+        if (!this.longBreakClicked) {
+            this.seconds = 0
+        }
+
         this.pomodoroClicked = false
         this.shortBreakClicked = false
-        this.longShortClicked = true
+        this.longBreakClicked = true
     
         this.longBreak.classList.add('clicked')
         if (this.shortBreak.classList.contains('clicked')) this.shortBreak.classList.remove('clicked')

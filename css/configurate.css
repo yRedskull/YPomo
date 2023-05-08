@@ -1,27 +1,116 @@
-.blur-shape-config {
+.blur-modal-config { 
+    position: absolute;
     width: 100vw;
     height: 100vh;
-    position: relative;
     top: 0;
     left: 0;
 
     background: rgba(0, 0, 0, 0.329);
+    z-index: 5;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 999;
 }
 
-.shape-config {
-    width: 60%;
-    min-width: 450px;
-    min-height: 200px;
-
-    color: black;
+.modal-config {
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 
     background-color: white;
+    color: rgb(0, 0, 0);
+
+    padding: 20px;
+
+    border-radius: 10px;
+    
+    z-index: 10;
+
+    width: 90%;
 }
+
+.blur-modal-config.hide, .modal-config.hide {
+    display: none;
+}
+
+.h1-config {
+    font-size: 30px;
+    font-weight: 700;
+
+    color: rgb(48, 48, 48);
+    
+
+    margin: 80px 0px 60px 0px;
+    text-align: center;
+
+    
+}
+
+.h2-config {
+    font-size: 20px;
+    font-weight: 600;
+
+    color: rgb(88, 88, 88);
+
+    padding: 10px;
+    
+    text-align: center;
+}
+
+.config {
+    font-family: Arial, Helvetica, sans-serif;
+
+    color: rgba(0, 0, 0, 0.39);
+
+    text-align: center;
+
+    font-size: 30px;
+
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inputs-options {
+    background-color: rgba(128, 128, 128, 0.199);
+    color: rgb(97, 97, 97);
+
+    border: 0;
+
+    padding: 10px;
+    margin: 0 20px;
+
+    min-width: 20%;
+    max-width: 50%;
+    font-size: 1.2em;
+
+}
+
+#save-config {
+    display: block;
+
+    margin: 30px auto;
+    padding: 20px;
+
+    font-size: 2em;
+
+    border: 0;
+    border-radius: 10px;
+
+
+}
+
+@media (max-width:435px) {
+    #save-config {
+        font-size: 1.2em;
+    }
+
+    .config {
+        font-size: 18px;
+    }
+}
+
+
 
 

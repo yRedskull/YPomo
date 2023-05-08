@@ -5,36 +5,72 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./img/certo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/configurate.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/pomodoro.css">
-    <link rel="stylesheet" href="./css/configurate.css">
     <title>YPomo</title>
 </head>
 <body>
     <header>
+
         <div class="logo"><img src="./img/certo.png" class="img"> YPomo</div>
         
     </header>
-    <div><img src="./img/config.png" class="config" alt="config"></div>
+
+    <div class="blur-modal-config hide">   
+    
+
+        <div class="modal-config hide">
+            <div id="close-modal"></div>
+
+            <div class="h2-config">Configurações</div class="h1-config">
+
+            <div class="h1-config">Cronômetro (minutos)</div>
+
+            <div class="config">
+
+                <div>Pomodoro</div>
+
+                <div>Intervalo Curto</div>
+
+                <div>Intervalo Longo</div>
+                
+
+            </div>
+            <div class="config">
+                <input type="number" class="inputs-options" name="pomodoro-min" class="" id="pomodoro-min">
+                <input type="number" class="inputs-options" name="short-break-min" id="short-break-min">
+                <input type="number" class="inputs-options" name="long-break-min" id="long-break-min">
+            </div>
+            <button id="save-config">Salvar</button>
+
+    </div>
+
+    </div>
+
+    <div><img src="./img/config.png" class="config-logo" alt="config"></div>
+
     <div class="shape-container">
-        
+
         <main class="container">
-            <div class="option">
+
+            <div class="options">
+
                 <div class="pomodoro">Pomodoro</div>
+
                 <div class="short-break">Intervalo Curto</div>
+
                 <div class="long-break">Intervalo Longo</div>
+
             </div>
             <div class="timer"></div>
+
             <button class="start">Começar</button>
+
         </main>
+
     </div>
-    <div class="blur-shape-config">
-        <div class="shape-config ">
-            <p>fsafafasfssfasfasfsafsaf
-                asfasfasf Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ea, excepturi iure deserunt dicta eveniet aperiam perspiciatis voluptatum numquam amet accusamus quibusdam incidunt accusantium doloribus fuga quos delectus illum ut sed.
-            </p>
-        </div>
-    </div>
+    
     <script src="./js/main.js"></script>
 </body>
 </html>
