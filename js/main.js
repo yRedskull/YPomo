@@ -7,17 +7,20 @@ class YPomo{
         this.pomodoro = document.querySelector('.pomodoro')
         this.shortBreak = document.querySelector('.short-break')
         this.longBreak = document.querySelector('.long-break')
-        this.start = document.querySelector('.start')
+        this.start = document.querySelector('.start-pomo')
         this.saveConfig = document.querySelector('#save-config')
         this.blurModalConfig = document.querySelector('.blur-modal-config')
         this.modalConfig = document.querySelector('.modal-config')
         this.configPomodoroMin = document.querySelector('#pomodoro-min')
         this.configShortMin = document.querySelector('#short-break-min')
         this.configLongMin = document.querySelector('#long-break-min')
+        this.nextPomo = document.querySelector('.next-pomo')
+        this.contPomo = document.querySelector('#cont-pomo')
 
         this.standardPomodoro = 25
         this.standardShortBreak = 10
         this.standardLongBreak = 15
+        this.standardcontPomo = 1
 
         this.configPomodoroMin.value = this.standardPomodoro
         this.configShortMin.value = this.standardShortBreak
@@ -27,12 +30,13 @@ class YPomo{
         this.startClicked = false
         this.pomodoroconfig = ''
         this.pomodoroClicked = true
-        this.pomodoro.classList.add('clicked')
         this.shortBreakClicked = false
         this.longBreakClicked = false
 
         this.seconds = 0
 
+
+        this.contPomoSet()
         this.pomodoroSet()
         this.printer()
     }
@@ -57,6 +61,7 @@ class YPomo{
                 || el === this.saveConfig
                 || el.classList.contains('config-img')
                 ) this.configurationToggle()
+            if (el === this.nextPomo) this.nextStep()
         })
 
     }
@@ -79,13 +84,15 @@ class YPomo{
 
     async chronometer() {
         if (this.startClicked) {
-            this.start.classList.remove('btn-click')
+            this.start.classList.toggle('btn-click')
             this.start.innerHTML = 'Começar'
+            this.nextPomo.classList.toggle('hide')
             clearInterval(this.whi)
             this.startClicked = false
         } else {
-            this.start.classList.add('btn-click')
+            this.start.classList.toggle('btn-click')
             this.start.innerHTML = 'Pausar'
+            this.nextPomo.classList.toggle('hide')
             this.whi = await setInterval(() => {
                 if (this.seconds === 0) {
                     this.seconds = 59
@@ -96,9 +103,7 @@ class YPomo{
                 
                 if (this.minutes === 0 && this.seconds === 0) {
                     clearInterval(this.whi)
-                    if (this.pomodoroClicked) this.shortBreakSet()
-                    else if (this.shortBreakClicked) this.pomodoroSet()
-                    else if (this.longBreakClicked) this.pomodoroSet()
+                    this.nextStep()
                 }
             }, 1000) 
             this.startClicked = true
@@ -106,12 +111,28 @@ class YPomo{
     
         
     }
+
+    nextStep() {
+        if (this.pomodoroClicked) {
+            this.standardcontPomo++
+            this.contPomoSet()
+            if (this.standardcontPomo % 4 === 0) this.longBreakSet()
+            else this.shortBreakSet()
+        } else if (this.shortBreakClicked 
+                    || this.longBreakClicked) this.pomodoroSet()
+    }
     
+    contPomoSet() {
+        this.contPomo.innerHTML = `#${this.standardcontPomo}`
+    }
+
+
     pomodoroSet() {
         if (this.startClicked) {
             clearInterval(this.whi)
-            this.start.classList.remove('btn-click')
+            this.start.classList.toggle('btn-click')
             this.start.innerHTML = 'Começar'
+            this.nextPomo.classList.toggle('hide')
             this.startClicked = false
         }
         this.minutes = this.configPomodoroMin.value || this.standardPomodoro
@@ -128,17 +149,18 @@ class YPomo{
         this.start.style.color = "#be4040"
         this.favicon.setAttribute('href', "./img/faviconred.png")
     
-        this.pomodoro.classList.add('clicked')
-        if (this.shortBreak.classList.contains('clicked')) this.shortBreak.classList.remove('clicked')
-        if (this.longBreak.classList.contains('clicked')) this.longBreak.classList.remove('clicked')
+        this.pomodoro.classList.toggle('clicked')
+        if (this.shortBreak.classList.contains('clicked')) this.shortBreak.classList.toggle('clicked')
+        if (this.longBreak.classList.contains('clicked')) this.longBreak.classList.toggle('clicked')
         this.printer()
     }
     
     shortBreakSet() {
         if (this.startClicked) {
             clearInterval(this.whi)
-            this.start.classList.remove('btn-click')
+            this.start.classList.toggle('btn-click')
             this.start.innerHTML = 'Começar'
+            this.nextPomo.classList.toggle('hide')
             this.startClicked = false
         }
         this.minutes = this.configShortMin.value || this.standardShortBreak
@@ -155,17 +177,18 @@ class YPomo{
         this.start.style.color = "#4C93B9"
         this.favicon.setAttribute('href', "./img/faviconblue.png")
 
-        this.shortBreak.classList.add('clicked')
-        if (this.pomodoro.classList.contains('clicked')) this.pomodoro.classList.remove('clicked')
-        if (this.longBreak.classList.contains('clicked')) this.longBreak.classList.remove('clicked')
+        this.shortBreak.classList.toggle('clicked')
+        if (this.pomodoro.classList.contains('clicked')) this.pomodoro.classList.toggle('clicked')
+        if (this.longBreak.classList.contains('clicked')) this.longBreak.classList.toggle('clicked')
         this.printer()
     }
     
     longBreakSet() {
         if (this.startClicked) {
             clearInterval(this.whi)
-            this.start.classList.remove('btn-click')
+            this.start.classList.toggle('btn-click')
             this.start.innerHTML = 'Começar'
+            this.nextPomo.classList.toggle('hide')
             this.startClicked = false
         }
         this.minutes = this.configLongMin.value || this.standardLongBreak
@@ -182,9 +205,9 @@ class YPomo{
         this.start.style.color = "#43a193"
         this.favicon.setAttribute('href', "./img/favicongreen.png")
     
-        this.longBreak.classList.add('clicked')
-        if (this.shortBreak.classList.contains('clicked')) this.shortBreak.classList.remove('clicked')
-        if (this.pomodoro.classList.contains('clicked')) this.pomodoro.classList.remove('clicked')
+        this.longBreak.classList.toggle('clicked')
+        if (this.shortBreak.classList.contains('clicked')) this.shortBreak.classList.toggle('clicked')
+        if (this.pomodoro.classList.contains('clicked')) this.pomodoro.classList.toggle('clicked')
         this.printer()
     }
 

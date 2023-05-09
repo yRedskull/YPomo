@@ -46,13 +46,14 @@ header {
 }
 
 .config-img {
-    width: 50px auto;
+    width: 50px ;
 
     display: block;
 
-    margin-top: 50px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0;
 
 
     filter: opacity(.6);
@@ -69,6 +70,12 @@ header {
 .img {
     width: 32px;
     margin: -5px 0px;
+}
+
+#cont-pomo {
+    text-align: center;
+
+    font-size: 30px;
 }
 
 
