@@ -100,7 +100,7 @@ class YPomo{
                     else if (this.shortBreakClicked) this.pomodoroSet()
                     else if (this.longBreakClicked) this.pomodoroSet()
                 }
-            }, 1) 
+            }, 1000) 
             this.startClicked = true
         } 
     
