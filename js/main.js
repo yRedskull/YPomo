@@ -67,6 +67,14 @@ class YPomo{
 
     }
 
+    pauseSet() {
+        clearInterval(this.whi)
+        this.start.classList.remove('btn-click')
+        this.start.innerHTML = 'Começar'
+        this.nextPomo.classList.toggle('hide')
+        this.startClicked = false
+    }
+
 
     configurationToggle() {
         this.blurModalConfig.classList.toggle('hide')
@@ -130,13 +138,9 @@ class YPomo{
 
     pomodoroSet() {
         if (this.startClicked) {
-            clearInterval(this.whi)
-            this.start.classList.remove('btn-click')
-            this.start.innerHTML = 'Começar'
-            this.nextPomo.classList.toggle('hide')
-            this.startClicked = false
+            this.pauseSet()
         }
-        this.minutes = this.configPomodoroMin.value || this.standardPomodoro
+        this.minutes = Number(this.configPomodoroMin.value) || this.standardPomodoro
         
         if (!this.pomodoroClicked) {
             this.seconds = 0
@@ -164,7 +168,7 @@ class YPomo{
             this.nextPomo.classList.toggle('hide')
             this.startClicked = false
         }
-        this.minutes = this.configShortMin.value || this.standardShortBreak
+        this.minutes = Number(this.configShortMin.value) || this.standardShortBreak
 
         if (!this.shortBreakClicked) {
             this.seconds = 0
@@ -192,7 +196,7 @@ class YPomo{
             this.nextPomo.classList.toggle('hide')
             this.startClicked = false
         }
-        this.minutes = this.configLongMin.value || this.standardLongBreak
+        this.minutes = Number(this.configLongMin.value) || this.standardLongBreak
 
         if (!this.longBreakClicked) {
             this.seconds = 0
