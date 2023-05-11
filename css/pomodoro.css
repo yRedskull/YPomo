@@ -1,25 +1,28 @@
 .shape-container {
-    padding: 20px;
+    padding: 0 20px;
 }
 
 .container {
     background-color: rgba(0, 0, 0, 0.2);
 
+    overflow-wrap: break-word;
+
     padding: 30px 0px;
 
     max-width: 600px;
 
-    margin: 50px auto;
+    margin: 30px auto 10px auto;
     
     z-index: 5;
 
     border-radius: 10px;
 }
 
+
 .options {
     display: flex;
     justify-content: center;
-    align-items: stretch;
+    align-items: center;
 }
 
 .pomodoro, .short-break, .long-break {
@@ -54,6 +57,10 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.block-exec {
+    overflow-wrap: break-word;
+}
+
 .start-pomo {
     background-color: rgba(255, 255, 255, 0.911);
     color: var(--background);
@@ -79,6 +86,10 @@
     box-shadow: 0px 0px 8px 5px rgba(0, 0, 0, 0.123);
 }
 
+.start-pomo:hover {
+    background-color: rgb(255, 255, 255);
+}
+
 .btn-click {
     background-color: rgba(255, 255, 255, 0.596);
     box-shadow: 0px 0px 8px 1px rgba(255, 255, 255, 0.849);
@@ -99,6 +110,11 @@
     margin: auto;
 
 }
+
+.next-pomo:hover {
+    opacity: .5;
+}
+
 .next-pomo.hide {
     display: none;
 }
@@ -138,5 +154,24 @@
         border-radius: 5px;
 
         width: 150px;
+    }
+}
+
+@media (max-width:295px) {
+    .options {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:250px) {
+
+    .timer {
+        font-size: 50px;
+    }
+
+    .start-pomo {
+        width: 125px;
+
+        font-size: 1.2em;
     }
 }

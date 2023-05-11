@@ -17,37 +17,6 @@
         
     </header>
 
-    <div class="blur-modal-config hide">   
-    
-
-        <div class="modal-config hide">
-            <div id="close-modal"></div>
-
-            <div class="h2-config">Configurações</div class="h1-config">
-
-            <div class="h1-config">Cronômetro (minutos)</div>
-
-            <div class="config">
-
-                <div>Pomodoro</div>
-
-                <div>Intervalo Curto</div>
-
-                <div>Intervalo Longo</div>
-                
-
-            </div>
-            <div class="config">
-                <input type="number" class="inputs-options" name="pomodoro-min" class="" id="pomodoro-min">
-                <input type="number" class="inputs-options" name="short-break-min" id="short-break-min">
-                <input type="number" class="inputs-options" name="long-break-min" id="long-break-min">
-            </div>
-            <button id="save-config">Salvar</button>
-
-    </div>
-
-    </div>
-
     <div><img src="./img/config.png" class="config-img" alt="config"></div>
 
     <div class="shape-container">
@@ -56,11 +25,11 @@
 
             <div class="options">
 
-                <div class="pomodoro">Pomodoro</div>
+                <div class="pomodoro"></div>
 
-                <div class="short-break">Intervalo Curto</div>
+                <div class="short-break"></div>
 
-                <div class="long-break">Intervalo Longo</div>
+                <div class="long-break"></div>
 
             </div>
             <div class="timer"></div>
@@ -75,7 +44,52 @@
 
     </div>
 
+    <div class="focus"></div>
     <div id="cont-pomo"></div>
+    
+
+    
+    <div class="blur-modal-config hide">   
+    
+
+        <div class="modal-config hide">
+
+            <div class="h2-config">Configurações</div class="h1-config">
+
+            <div class="h1-config">Cronômetro (minutos)</div>
+
+            <div class="config">
+
+                <div class="block-pomo-config">
+                    <div class="pomo-config-label">Pomodoro</div>
+                    <input type="text" class="inputs-options" name="pomodoro-input" class="" id="pomodoro-input">
+                </div>
+                <div class="block-short-config">
+                    <div class="short-config-label">Intervalo Curto</div>
+                    <input type="text" class="inputs-options" name="short-break-input" id="short-break-input">
+                </div>
+
+                <div class="block-long-config">
+                    <div class="long-config-label">Intervalo Longo</div>
+                    <input type="text" class="inputs-options" name="long-break-input" id="long-break-input">
+                </div>
+            </div>
+            <div class="block-cont-config">
+                <div class="cont-config-label">Descanso Longo após </div>
+                <input type="text" class="inputs-options" name="cont-pomo-config" id="cont-pomo-input"> 
+                <div class="cont-config-label">Pomodoros</div>
+            </div>
+            <button id="save-config">Salvar</button>
+
+        </div>
+
+    </div>
+
+    <div class="blur-modal-information">
+        <div class="modal-information">
+            
+        </div>
+    </div>
 
     
     <script src="./js/main.js"></script>

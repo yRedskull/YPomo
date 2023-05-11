@@ -10,13 +10,10 @@
     z-index: 0;
 }
 
-html {
-    height: 100vh;
-}
-
 body {
+    height: 100vh;
     color: white;
-
+    overflow-x: hidden!important;
     font-family: Arial, Helvetica, sans-serif;
     background-color: var(--background);
 
@@ -56,15 +53,13 @@ header {
     margin-bottom: 0;
 
 
-    filter: opacity(.6);
-
     border-radius: 20px;
 
     cursor: pointer;
 }
 
 .config-img:hover {
-    filter: opacity(1);
+    opacity: .7;
 }
 
 .img {
@@ -74,8 +69,18 @@ header {
 
 #cont-pomo {
     text-align: center;
-
+    
     font-size: 30px;
 }
+
+.focus {
+    text-align: center;
+
+    margin: 10px;
+
+    font-size: 2em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 
 

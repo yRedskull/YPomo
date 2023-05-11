@@ -14,8 +14,6 @@
     box-sizing: border-box;
     position: absolute;
     left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 
     background-color: white;
     color: rgb(0, 0, 0);
@@ -27,6 +25,39 @@
     z-index: 10;
 
     width: 80%;
+
+    animation-name: modal-transition;
+    animation-duration: 200ms;
+
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+}
+
+@keyframes modal-transition {
+    0% {
+        opacity: 0;
+        top: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+}
+
+@keyframes modal-transition-reverse {
+    0% {
+        opacity: 1;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    100% {
+        opacity: 0;
+        top: 0;
+    }
+    
 }
 
 .blur-modal-config.hide, .modal-config.hide {
@@ -64,12 +95,17 @@
 
     text-align: center;
 
-    font-size: 30px;
-
+    font-size: 2em;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    flex-direction: row;
+}
+
+.pomo-config-label, .short-config-label, .long-config-label {
+    text-align: center;
+    padding: 5px;
 }
 
 .inputs-options {
@@ -81,8 +117,7 @@
     padding: 10px;
     margin: 0 20px;
 
-    min-width: 20%;
-    max-width: 50%;
+    max-width: 2em;
     font-size: 1.2em;
 
 }
@@ -103,7 +138,37 @@
 }
 
 #save-config:hover {
-    background-color: rgb(73, 71, 71);
+    background-color: rgba(128, 128, 128, 0.199);
+}
+
+.block-pomo-config,
+.block-short-config,
+.block-long-config {
+    left: 35px;
+    margin: auto;
+}
+
+.block-cont-config {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: rgba(0, 0, 0, 0.39);
+
+    margin: 20px auto;
+
+    text-align: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+
+@media (max-width: 850px) {
+    .block-pomo-config,
+    .block-short-config,
+    .block-long-config {
+        left: 0;
+    }
 }
 
 @media (max-width:435px) {
@@ -111,9 +176,38 @@
         font-size: 1.2em;
     }
 
-    .config {
-        font-size: 18px;
+    .block-cont-config {
+        flex-direction: column;
     }
+
+    .config {
+        font-size: 1.2em;
+    }
+
+    .h1-config {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:295px) {
+    .config {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:250px) {
+    .config {
+        flex-direction: column;
+    }
+
+    .h1-config {
+        font-size: 20px;
+    }
+
+    .h2-config {
+        font-size: 15px;
+    }
+
 }
 
 
