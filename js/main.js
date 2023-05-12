@@ -18,6 +18,10 @@ class YPomo{
         this.modalConfig = document.querySelector('.modal-config')
         this.closeModalConfig = document.querySelector('.close-modal-config')
 
+        this.blurModalInfo = document.querySelector('.blur-modal-info')
+        this.modalInfo = document.querySelector('.modal-info')
+        this.exitInfoBtn = document.querySelector('.exit-info')
+
         this.pomoConfigLabel = document.querySelector('.pomo-config-label')
         this.shortConfigLabel = document.querySelector('.short-config-label')
         this.longConfigLabel = document.querySelector('.long-config-label')
@@ -82,10 +86,10 @@ class YPomo{
     }
 
     load() {
-        setTimeout(this.body.style.transition = '1s', 100)
+        this.body.style.transition = '1s'
     }
 
-    listener() {
+    async listener() {
         window.addEventListener('load', e => this.load(e))
         window.addEventListener('resize', e => this.textOptions(e))
 
@@ -103,6 +107,9 @@ class YPomo{
                 ) {
                     this.configurationToggle()
                 }
+            if (el === this.blurModalInfo 
+                || el.classList.contains('info-img')
+                || el === this.exitInfoBtn) this.Info()
             if (el === this.nextPomo) this.nextStep()
         })
 
@@ -115,19 +122,30 @@ class YPomo{
                 || el === this.configContInput) {
             if (e.key === "Backspace" 
                 || arrows.includes(e.key)
+                || e.key === "Delete"
                  ) return 
-            if (!e.key.match("[0-9-]")) return e.preventDefault() 
+            if (!e.key.match("[0-9]")) return e.preventDefault() 
         }
         })
 
     }
 
-    pause() {
-        clearInterval(this.whi)
-        this.start.classList.remove('btn-click')
-        this.start.innerHTML = 'Começar'
-        this.nextPomo.classList.toggle('hide')
-        this.startClicked = false
+    Info() {
+        if (!this.modalInfo.classList.contains('hide')) {
+            this.modalInfo.style.animationName = "modal-transition-reverse"
+            this.modalInfo.style.animationDuration = "200ms"
+            this.modalInfo.style.opacity = 0
+            this.modalInfo.style.top = 0
+        } else {
+            this.modalInfo.style.animationName = "modal-transition"
+            this.modalInfo.style.animationDuration = "200ms"
+            this.modalInfo.style.opacity = 1
+            this.modalInfo.style.top = "50%"
+        }
+
+        setTimeout(() => {
+        this.blurModalInfo.classList.toggle('hide')
+        this.modalInfo.classList.toggle('hide')}, 50)
     }
 
 
@@ -138,7 +156,23 @@ class YPomo{
         else this.configClicked = true
 
         if (Number(this.configContInput.value) > 0){
-        this.standardContPomo = Number(this.configContInput.value) || this.standardContPomo
+            this.standardContPomo = Number(this.configContInput.value)
+        } else this.configContInput.value = this.standardContPomo
+
+        if (Number(this.configPomodoroInput.value) > 0) { 
+            this.minutes = Number(this.configPomodoroInput.value)
+        } else this.configPomodoroInput.value = this.standardPomodoro
+        
+        if (Number(this.configShortInput.value) > 0){
+            this.minutes = Number(this.configShortInput.value)
+        } else {
+            this.configShortInput.value = this.standardShortBreak
+        }
+
+        if (Number(this.configLongInput.value) > 0){
+            this.minutes = Number(this.configLongInput.value)
+        } else {
+            this.configLongInput.value = this.standardLongBreak
         }
 
         this.contPomo.innerHTML = "#0"
@@ -167,16 +201,12 @@ class YPomo{
         
     }
 
-    async chronometer() {
+    chronometer() {
         if (this.startClicked) {
-            this.pause()
+            this.pauseBtn()
         } else {
-            this.start.classList.add('btn-click')
-            this.start.innerHTML = 'Pausar'
-            this.start.setAttribute('title', "Pausar")
-            this.nextPomo.classList.toggle('hide')
-            this.whi = await setInterval(() => {
-
+            this.startBtn()
+            this.whi = setInterval(() => {
                 if (this.seconds === 0) {
                     this.seconds = 59
                     if (this.minutes > 0) this.minutes-- 
@@ -188,12 +218,36 @@ class YPomo{
                 if (this.minutes === 0 && this.seconds === 0) {
                     clearInterval(this.whi)
                     this.nextStep()
+                    const audio = new Audio('./songs/alarm.mp3')
+                    audio.play()
                 }
             }, 1000) 
             this.startClicked = true
         } 
     
         
+    }
+
+    startBtn() {
+        const audio = new Audio('./songs/start.mp3')
+        audio.play()
+
+        this.start.classList.add('btn-click')
+        this.start.innerHTML = 'Pausar'
+        this.start.setAttribute('title', "Pausar")
+        this.nextPomo.classList.toggle('hide')
+    }
+
+    pauseBtn() {
+        const audio = new Audio('./songs/pause.mp3')
+        audio.play()
+
+        clearInterval(this.whi)
+        this.start.classList.remove('btn-click')
+        this.start.innerHTML = 'Começar'
+        this.nextPomo.classList.toggle('hide')
+        this.start.setAttribute('title', "Começar")
+        this.startClicked = false
     }
 
     nextStep() {
@@ -213,10 +267,13 @@ class YPomo{
 
     pomodoroSet() {
         if (this.startClicked) {
-            this.pause()
+            this.pauseBtn()
         }
-        this.minutes = Number(this.configPomodoroInput.value) || this.standardPomodoro
-        
+
+        this.minutes = Number(this.configPomodoroInput.value)
+
+
+
         if (!this.pomodoroClicked) {
             this.seconds = 0
         }
@@ -239,9 +296,10 @@ class YPomo{
     
     shortBreakSet() {
         if (this.startClicked) {
-            this.pause()
+            this.pauseBtn()
         }
-        this.minutes = Number(this.configShortInput.value) || this.standardShortBreak
+
+        this.minutes = Number(this.configShortInput.value)
 
         if (!this.shortBreakClicked) {
             this.seconds = 0
@@ -265,9 +323,11 @@ class YPomo{
     
     longBreakSet() {
         if (this.startClicked) {
-            this.pause()
+            this.pauseBtn()
         }
-        this.minutes = Number(this.configLongInput.value) || this.standardLongBreak
+
+        this.minutes = Number(this.configLongInput.value)
+       
 
         if (!this.longBreakClicked) {
             this.seconds = 0
@@ -295,18 +355,14 @@ class YPomo{
         let secondsString
         let minutesString
 
-        if (this.seconds < 10) secondsString = `0${this.seconds}` 
-        else secondsString = this.seconds
+        this.seconds < 10 ? secondsString = `0${this.seconds}` : secondsString = this.seconds
 
-        if (this.minutes < 10 && this.minutes > 0) minutesString = `0${this.minutes}`
-        else minutesString = this.minutes
+        this.minutes < 10 ? minutesString = `0${this.minutes}`: minutesString = this.minutes
 
         const print = `${minutesString}:${secondsString}`
         const title = `${print} - YPomo`
         this.title.innerHTML = title
         this.timer.innerHTML = print
-        
-
     }
 }
 

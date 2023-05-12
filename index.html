@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" id="favicon" href="./img/faviconred.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/info.css">
     <link rel="stylesheet" href="./css/configurate.css">
     <link rel="stylesheet" href="./css/index.css">
     <link rel="stylesheet" href="./css/pomodoro.css">
@@ -13,11 +14,22 @@
 <body>
     <header>
 
-        <div class="logo"><img src="./img/right.png" class="img"> YPomo</div>
+        <div class="header-container">
+            <div></div>
+            <div class="logo">
+                <img src="./img/right.png" class="img">
+                <div>YPomo</div>
+            </div>
+            <img src="./img/information.png" class="info-img" alt="information">
+        </div>
         
     </header>
 
-    <div><img src="./img/config.png" class="config-img" alt="config"></div>
+
+    <div>
+        <img src="./img/config.png" class="config-img" alt="config">
+    </div>
+
 
     <div class="shape-container">
 
@@ -37,8 +49,6 @@
                 <button class="start-pomo" title="Começar">Começar</button>
                 <div class="shape-next"><img src="./img/next.png" alt="pular" class="next-pomo hide" title="Pular"></div>
             </div>
-
-            
 
         </main>
 
@@ -75,7 +85,7 @@
                 </div>
             </div>
             <div class="block-cont-config">
-                <div class="cont-config-label">Descanso Longo após </div>
+                <div class="cont-config-label">Intervalo Longo após </div>
                 <input type="text" class="inputs-options" name="cont-pomo-config" id="cont-pomo-input"> 
                 <div class="cont-config-label">Pomodoros</div>
             </div>
@@ -85,9 +95,13 @@
 
     </div>
 
-    <div class="blur-modal-information">
-        <div class="modal-information">
-            
+    <div class="blur-modal-info hide">
+        <div class="modal-info hide">
+            <button class="exit-info">X</button>
+            <p>
+                Pomodoro é uma técnica de gerenciamento de tempo que consiste em dividir o trabalho em períodos de 25 minutos(chamados de "pomodoros") seguidos de pequenas pausas de 5 minutos, após 4 pomodoros uma pausa maior é feita entre 15 a 20 minutos, com o objetivo de aumentar a produtividade e reduzir a procrastinação.
+            </p>
+            <img src="./img/tomato.png" alt="tomate" class="tomato" width="100px">
         </div>
     </div>
 
