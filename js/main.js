@@ -103,10 +103,7 @@ class YPomo{
             if (el === this.longBreak) this.longBreakSet()
             if (el === this.blurModalConfig 
                 || el === this.saveConfig
-                || el.classList.contains('config-img')
-                ) {
-                    this.configurationToggle()
-                }
+                || el.classList.contains('config-img')) this.configurationToggle()
             if (el === this.blurModalInfo 
                 || el.classList.contains('info-img')
                 || el === this.exitInfoBtn) this.Info()
@@ -132,20 +129,28 @@ class YPomo{
 
     Info() {
         if (!this.modalInfo.classList.contains('hide')) {
+
             this.modalInfo.style.animationName = "modal-transition-reverse"
             this.modalInfo.style.animationDuration = "200ms"
             this.modalInfo.style.opacity = 0
             this.modalInfo.style.top = 0
+
+            this.body.style.overflowY = 'unset'
         } else {
+
             this.modalInfo.style.animationName = "modal-transition"
             this.modalInfo.style.animationDuration = "200ms"
             this.modalInfo.style.opacity = 1
             this.modalInfo.style.top = "50%"
+
+            this.body.style.overflowY = 'hidden'
         }
 
         setTimeout(() => {
         this.blurModalInfo.classList.toggle('hide')
         this.modalInfo.classList.toggle('hide')}, 50)
+
+
     }
 
 
@@ -180,15 +185,21 @@ class YPomo{
 
 
         if (!this.modalConfig.classList.contains('hide')) {
+
             this.modalConfig.style.animationName = "modal-transition-reverse"
             this.modalConfig.style.animationDuration = "200ms"
             this.modalConfig.style.opacity = 0
             this.modalConfig.style.top = 0
+
+            this.body.style.overflowY = 'unset'
         } else {
+
             this.modalConfig.style.animationName = "modal-transition"
             this.modalConfig.style.animationDuration = "200ms"
             this.modalConfig.style.opacity = 1
             this.modalConfig.style.top = "50%"
+
+            this.body.style.overflowY = 'hidden'
         }
 
         setTimeout(() => {
