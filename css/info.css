@@ -1,9 +1,10 @@
 .blur-modal-info { 
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 114vh;
     top: 0;
-    left: 0;
+
+    padding: 0 20px;
 
     background: rgba(0, 0, 0, 0.329);
     z-index: 3253;
@@ -11,22 +12,32 @@
 }
 
 .modal-info {
-    box-sizing: border-box;
-
-    overflow-wrap: break-word;
-    position: absolute;
-    left: 50%;
     background-color: rgba(0, 0, 0, 0.89);
     color: rgb(255, 255, 255);
+    opacity: 1;
+
+    box-sizing: unset;
+
+    overflow-wrap: break-word;
+
+    position: relative;
+
+    left: 50%;
+    
     padding: 20px;
+
     border-radius: 10px;
+
     z-index: 10;
-    width: 70%;
+
+    max-width: 700px;
+
     animation-name: modal-transition;
     animation-duration: 200ms;
+
     top: 50%;
     transform: translate(-50%, -50%);
-    opacity: 1;
+    
 }
 
 .blur-modal-info.hide, .modal-info.hide {
@@ -36,8 +47,7 @@
 .modal-info > p {
     text-align: left;
 
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 2em;
+    font-size: 1.7em;
 }
 
 .tomato {
@@ -66,48 +76,3 @@
     top: -5%;
 }
 
-@media (max-width:850px) {
-    .modal-info {
-        width: 80%;
-    }
-
-    .exit-info {
-        width: 40px;
-        height: 40px;
-
-        left: 96%;
-        top: -3%;
-
-        font-size: 1.4em;
-    }
-}
-
-@media (max-width:520px) {
-    .tomato {
-        width: 70px;
-    }
-
-    .exit-info {
-        width: 30px;
-        height: 30px;
-
-        left: 95%;
-        top: -3%;
-
-        font-size: 1em;
-    }
-
-    .modal-info > p {
-    
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.5em;
-    }
-}
-
-@media (max-width:335px) {
-
-    .exit-info {
-        left: 93%;
-        top: -1%;
-    }
-}

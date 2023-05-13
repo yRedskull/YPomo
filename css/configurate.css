@@ -1,7 +1,7 @@
 .blur-modal-config { 
     position: absolute;
     width: 100vw;
-    height: 100vh;
+    height: 114vh;
     top: 0;
     left: 0;
 
@@ -114,7 +114,7 @@
 
     border: 0;
 
-    padding: 10px;
+    padding: 3px;
     margin: 0 20px;
 
     max-width: 2em;
@@ -163,52 +163,7 @@
     font-size: 1.5em;
 }
 
-@media (max-width: 850px) {
-    .block-pomo-config,
-    .block-short-config,
-    .block-long-config {
-        left: 0;
-    }
-}
 
-@media (max-width:435px) {
-    #save-config {
-        font-size: 1.2em;
-    }
-
-    .block-cont-config {
-        flex-direction: column;
-    }
-
-    .config {
-        font-size: 1.2em;
-    }
-
-    .h1-config {
-        font-size: 25px;
-    }
-}
-
-@media (max-width:295px) {
-    .config {
-        flex-direction: column;
-    }
-}
-
-@media (max-width:250px) {
-    .config {
-        flex-direction: column;
-    }
-
-    .h1-config {
-        font-size: 20px;
-    }
-
-    .h2-config {
-        font-size: 15px;
-    }
-
-}
 
 
 

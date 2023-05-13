@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
 :root {
     --background: #be4040;
 }
@@ -8,13 +11,14 @@
     box-sizing: border-box;
     position: relative;
     z-index: 0;
+    font-family: 'Roboto Slab', serif;
 }
+
 
 body {
     height: 100vh;
     color: white;
     overflow-x: hidden!important;
-    font-family: Arial, Helvetica, sans-serif;
     background-color: var(--background);
 
 }
@@ -30,10 +34,6 @@ header {
     text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.315);
 
     padding: 5px 0px 10px 0px;
-    
-    font-size: 2em;
-    font-weight: 500;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .header-container {
@@ -46,9 +46,12 @@ header {
 
 .logo {
     margin: 10px;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-size: 2em;
 }
 
 
@@ -78,7 +81,7 @@ header {
 
     display: block;
 
-    margin-right: 50px;
+    margin-right: 10px;
 
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -92,36 +95,19 @@ header {
     opacity: .5;
 }
 
-.img {
-    width: 32px;
+.logo-img {
+    width: 26px;
     margin: -5px 0px;
 }
 
-#cont-pomo {
-    text-align: center;
-    
-    font-size: 30px;
-}
 
-.focus {
+.focus, #cont-pomo {
     text-align: center;
 
-    margin: 10px;
+    margin: 10px 0px 0px 0px;
 
     font-size: 2em;
-    font-family: Arial, Helvetica, sans-serif;
 }
 
-@media (max-width:628px) {
-    .info-img {
-        margin-right: 0;
-    }
-}
-
-@media (max-width:200px) {
-    .info-img {
-        width: 30px;
-    }
-}
 
 

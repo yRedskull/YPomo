@@ -1,0 +1,181 @@
+@media (max-width:850px) {
+
+    .modal-info > p {
+        text-align: left;
+    
+        font-size: 1.7em;
+    }
+
+    .exit-info {
+        width: 40px;
+        height: 40px;
+
+        left: 96%;
+        top: -3%;
+
+        font-size: 1.4em;
+    }
+
+    .block-pomo-config,
+    .block-short-config,
+    .block-long-config {
+        left: 0;
+    }
+}
+
+@media (max-width:628px) {
+    .modal-info > p {
+        text-align: left;
+    
+        font-size: 1.2em;
+    }
+
+    .info-img {
+        margin-right: 0;
+    }
+}
+
+@media (max-width:520px) {
+    .tomato {
+        width: 70px;
+    }
+
+    .exit-info {
+        width: 30px;
+        height: 30px;
+
+        left: 95%;
+        top: -3%;
+
+        font-size: 1em;
+    }
+
+    .modal-info > p {
+    
+        font-size: 1em;
+    }
+}
+
+@media (max-width:435px) {
+    .focus, #cont-pomo {
+        font-size: 1.5em;
+    }
+
+    .logo{
+        font-size: 1.5em;
+    }
+
+    .logo-img {
+        width: 20px;
+    }
+
+    .info-img {
+        width: 40px;
+    }
+
+    .timer {
+        font-size: 80px;
+
+    }
+
+    .pomodoro, .short-break, .long-break {
+        font-size: 1em;
+    }
+
+    .start-pomo {
+        font-size: 1.5em;
+
+        border-radius: 8px;
+
+        width: 160px;
+    }
+
+    #save-config {
+        font-size: 1.2em;
+    }
+
+    .block-cont-config {
+        flex-direction: column;
+    }
+
+    .config {
+        font-size: 1.2em;
+    }
+
+    .h1-config {
+        font-size: 25px;
+    }
+}
+
+@media (max-width:335px) {
+    .focus, #cont-pomo, .logo {
+        font-size: 1.3em;
+    }
+
+    .logo-img {
+        width: 16px;
+    }
+
+    .exit-info {
+        left: 93%;
+        top: -1%;
+    }
+
+    .timer {
+        font-size: 60px;
+
+    }
+
+    .start-pomo {
+        font-size: 1.3em;
+
+        border-radius: 5px;
+
+        width: 150px;
+    }
+
+    .config {
+        font-size: 1em;
+    }
+}
+
+@media (max-width:295px) {
+
+    .options {
+        flex-direction: column;
+    }
+}
+
+@media (max-width:250px) {
+    .start-pomo {
+        width: 125px;
+
+        font-size: 1.2em;
+    }
+
+    .config {
+        flex-direction: column;
+    }
+
+    .h1-config {
+        font-size: 20px;
+    }
+
+    .h2-config {
+        font-size: 15px;
+    }
+}
+
+@media (max-width:200px) {
+    .info-img {
+        width: 30px;
+    }
+
+    .logo{
+        font-size: 1em;
+    }
+
+    .logo-img {
+        width: 14px;
+    }
+}
