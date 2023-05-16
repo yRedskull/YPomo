@@ -79,8 +79,6 @@ class YPomo{
             this.pomodoro.innerHTML = 'Pomodoro'
             this.shortBreak.innerHTML = 'Intervalo Curto'
             this.longBreak.innerHTML = 'Intervalo Longo'
-
-            this.focus.innerHTML = 'Tempo de focar!'
         }
 
     }
