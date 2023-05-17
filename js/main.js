@@ -14,6 +14,7 @@ class YPomo{
         this.focus = document.querySelector('.focus')
 
         this.saveConfig = document.querySelector('#save-config')
+        this.resetConfig = document.querySelector('.reset-img')
         this.blurModalConfig = document.querySelector('.blur-modal-config')
         this.modalConfig = document.querySelector('.modal-config')
         this.closeModalConfig = document.querySelector('.close-modal-config')
@@ -83,6 +84,8 @@ class YPomo{
 
     }
 
+    
+
     load() {
         this.body.style.transition = '1s'
     }
@@ -102,6 +105,7 @@ class YPomo{
             if (el === this.blurModalConfig 
                 || el === this.saveConfig
                 || el.classList.contains('config-img')) this.configurationToggle()
+            if (el === this.resetConfig) this.reset()
             if (el === this.blurModalInfo 
                 || el.classList.contains('info-img')
                 || el === this.exitInfoBtn) this.Info()
@@ -147,10 +151,20 @@ class YPomo{
         setTimeout(() => {
         this.blurModalInfo.classList.toggle('hide')
         this.modalInfo.classList.toggle('hide')}, 50)
-
-
     }
 
+    verify() {
+        if (this.pomodoroClicked) return this.pomodoroSet()
+        if (this.shortBreakClicked) return this.shortBreakSet()
+        if (this.longBreakClicked) return this.longBreakSet()
+    }
+
+    reset() {
+        this.configPomodoroInput.value = this.standardPomodoro
+        this.configShortInput.value = this.standardShortBreak
+        this.configLongInput.value = this.standardLongBreak
+        this.configContInput.value = this.standardContPomo
+    }
 
     configurationToggle() {
         this.seconds = 0
@@ -158,9 +172,7 @@ class YPomo{
         if (this.configClicked) this.configClicked = false
         else this.configClicked = true
 
-        if (Number(this.configContInput.value) > 0){
-            this.standardContPomo = Number(this.configContInput.value)
-        } else this.configContInput.value = this.standardContPomo
+        if (!Number(this.configContInput.value)) this.configContInput.value = this.standardContPomo
 
         if (Number(this.configPomodoroInput.value) > 0) { 
             this.minutes = Number(this.configPomodoroInput.value)
@@ -168,15 +180,11 @@ class YPomo{
         
         if (Number(this.configShortInput.value) > 0){
             this.minutes = Number(this.configShortInput.value)
-        } else {
-            this.configShortInput.value = this.standardShortBreak
-        }
+        } else this.configShortInput.value = this.standardShortBreak
 
         if (Number(this.configLongInput.value) > 0){
             this.minutes = Number(this.configLongInput.value)
-        } else {
-            this.configLongInput.value = this.standardLongBreak
-        }
+        } else this.configLongInput.value = this.standardLongBreak
 
         this.contPomo.innerHTML = "#0"
         this.initContPomo = 0
@@ -204,9 +212,7 @@ class YPomo{
         this.blurModalConfig.classList.toggle('hide')
         this.modalConfig.classList.toggle('hide')}, 50)
 
-        if (this.pomodoroClicked) this.pomodoroSet()
-        if (this.shortBreakClicked) this.shortBreakSet()
-        if (this.longBreakClicked) this.longBreakSet()
+        this.verify()
         
     }
 
@@ -263,7 +269,7 @@ class YPomo{
         if (this.pomodoroClicked) {
             this.initContPomo++
             this.contPomoSet()
-            if (this.initContPomo % this.standardContPomo === 0) this.longBreakSet()
+            if (this.initContPomo % this.configContInput.value === 0) this.longBreakSet()
             else this.shortBreakSet()
         } else if (this.shortBreakClicked 
                     || this.longBreakClicked) this.pomodoroSet()
