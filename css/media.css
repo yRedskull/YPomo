@@ -58,6 +58,10 @@
 }
 
 @media (max-width:435px) {
+    .reset-img {
+        width: 30px;
+    }
+
     .focus, #cont-pomo {
         font-size: 1.5em;
     }
@@ -97,6 +101,10 @@
 
     .block-cont-config {
         flex-direction: column;
+    }
+
+    .config-img {
+        width: 50px;
     }
 
     .config {
@@ -178,6 +186,10 @@
 
     .logo-img {
         width: 14px;
+    }
+
+    .config-img {
+        width: 40px;
     }
 }
 
