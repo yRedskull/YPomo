@@ -154,42 +154,14 @@ class YPomo{
     }
 
     verify() {
+        this.seconds = 0
         if (this.pomodoroClicked) return this.pomodoroSet()
         if (this.shortBreakClicked) return this.shortBreakSet()
         if (this.longBreakClicked) return this.longBreakSet()
+
     }
 
-    reset() {
-        this.configPomodoroInput.value = this.standardPomodoro
-        this.configShortInput.value = this.standardShortBreak
-        this.configLongInput.value = this.standardLongBreak
-        this.configContInput.value = this.standardContPomo
-    }
-
-    configurationToggle() {
-        this.seconds = 0
-
-        if (this.configClicked) this.configClicked = false
-        else this.configClicked = true
-
-        if (!Number(this.configContInput.value)) this.configContInput.value = this.standardContPomo
-
-        if (Number(this.configPomodoroInput.value) > 0) { 
-            this.minutes = Number(this.configPomodoroInput.value)
-        } else this.configPomodoroInput.value = this.standardPomodoro
-        
-        if (Number(this.configShortInput.value) > 0){
-            this.minutes = Number(this.configShortInput.value)
-        } else this.configShortInput.value = this.standardShortBreak
-
-        if (Number(this.configLongInput.value) > 0){
-            this.minutes = Number(this.configLongInput.value)
-        } else this.configLongInput.value = this.standardLongBreak
-
-        this.contPomo.innerHTML = "#0"
-        this.initContPomo = 0
-
-
+    slideModal() {
         if (!this.modalConfig.classList.contains('hide')) {
 
             this.modalConfig.style.animationName = "modal-transition-reverse"
@@ -211,8 +183,58 @@ class YPomo{
         setTimeout(() => {
         this.blurModalConfig.classList.toggle('hide')
         this.modalConfig.classList.toggle('hide')}, 50)
+    }
 
-        this.verify()
+    reset() {
+        this.configPomodoroInput.value = this.standardPomodoro
+        this.configShortInput.value = this.standardShortBreak
+        this.configLongInput.value = this.standardLongBreak
+        this.configContInput.value = this.standardContPomo
+        this.contPomo.innerHTML = "#0"
+        this.initContPomo = 0
+        this.seconds = 0
+    }
+
+    configurationToggle() {
+
+        if (this.configClicked) {
+            this.configClicked = false
+            if (this.pomoVal != this.configPomodoroInput.value
+                ||this.shortVal != this.configShortInput.value
+                ||this.longVal != this.configLongInput.value
+                ||this.contVal != this.configContInput.value) {
+
+                if (Number(this.configPomodoroInput.value) > 0) { 
+                    this.minutes = Number(this.configPomodoroInput.value)
+                } else this.configPomodoroInput.value = this.standardPomodoro
+                
+                if (Number(this.configShortInput.value) > 0){
+                    this.minutes = Number(this.configShortInput.value)
+                } else this.configShortInput.value = this.standardShortBreak
+        
+                if (Number(this.configLongInput.value) > 0){
+                    this.minutes = Number(this.configLongInput.value)
+                } else this.configLongInput.value = this.standardLongBreak
+        
+                if (!Number(this.configContInput.value)) this.configContInput.value = this.standardContPomo
+                this.verify()
+            }
+
+            this.slideModal()
+
+        } else {
+            this.pomoVal = this.configPomodoroInput.value
+            this.shortVal = this.configShortInput.value
+            this.longVal = this.configLongInput.value
+            this.contVal = this.configContInput.value
+
+            this.configClicked = true
+            this.slideModal()
+        }
+
+        
+
+        
         
     }
 
