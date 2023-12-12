@@ -3,9 +3,14 @@
 
 :root {
     --background: #be4040;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 * {
+    
+
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
